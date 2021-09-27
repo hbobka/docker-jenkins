@@ -1,15 +1,7 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const app = express();
-
 let hello = "Hello World!";
-
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
 
 app.use(express.static("public"));
 
@@ -29,5 +21,3 @@ app.get("/", (req, res) => {
 });
 
 app.listen(80);
-
-console.log('hello world');
