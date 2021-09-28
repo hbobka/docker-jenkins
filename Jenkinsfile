@@ -5,14 +5,12 @@ node {
         checkout scm
     }
 
-    stage('Build image') {
-        app = docker.build("hbobka/docker-jenkins")
+    stage('Test image') {
+            sh 'npm test'
     }
 
-    stage('Test image') {
-        app.inside {
-            sh 'npm test'
-        }
+    stage('Build image') {
+        app = docker.build("hbobka/docker-jenkins")
     }
 
     stage('Push image') {
