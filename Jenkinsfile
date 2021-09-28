@@ -6,10 +6,12 @@ node {
     }
 
     stage('Test image') {
-        nodejs(nodeJSInstallationName: 'nodejs'){
+        def testContainer = docker.image('node:14.17.6')
+        testContainer.pull()
+        testContainer.inside {
             sh 'npm install --only=dev'
-    	    sh 'npm test'
-        }   
+            sh 'npm test'
+        }
     }
 
     stage('Build image') {
