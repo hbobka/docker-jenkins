@@ -7,6 +7,7 @@ node {
 
     stage('Test image') {
         nodejs(nodeJSInstallationName: 'nodejs'){
+            sh 'npm install --only=dev'
     	    sh 'npm test'
         }   
     }
