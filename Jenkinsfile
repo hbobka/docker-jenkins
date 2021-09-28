@@ -6,7 +6,10 @@ node {
     }
 
     stage('Test image') {
-            sh 'npm test'
+        nodejs(nodeJSInstallationName: 'nodejs'){
+            sh 'npm install --only=dev'
+    	    sh 'npm test'
+        }   
     }
 
     stage('Build image') {
